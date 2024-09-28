@@ -1,10 +1,11 @@
-/* eslint-disable react/prop-types */
-import { usePagedFetchData } from "../../hooks/useFetchData";
-import { CardsSection, AddCardsBtn } from "../../components/pokemonComponents/pokemonCards";
 import { LoadingSpinner } from "../../components/loading";
+import { CardsSection, AddCardsBtn } from "../../components/pokemonComponents/pokemonCards";
+import { usePagedFetchData } from "../../hooks/useFetchData";
 
-export function DetailType() {
-  const { data: pokemons, increasePageNumber, isLoading, totalObjects } = usePagedFetchData('by-type');
+
+export function DetailedAbility() {
+
+  const { data: pokemons, increasePageNumber, isLoading, totalObjects } = usePagedFetchData('by-ability');
 
   return (
     <>
@@ -23,8 +24,6 @@ export function DetailType() {
       )}
 
       {isLoading && <LoadingSpinner />}
-
     </>
-  );
+  )
 }
-

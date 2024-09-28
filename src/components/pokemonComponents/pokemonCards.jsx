@@ -26,3 +26,28 @@ export function NormalPokemonCard({ pokemon }) {
 		</div>
 	);
 }
+
+export function CardsSection({pokemonInfoArray}) {
+	return (
+	  <>
+	  <ul id="list-container" className="grid grid-cols-fit-300 gap-4">
+		{pokemonInfoArray.map((pokemon) => (
+		  <li key={pokemon.national_index} className="border-2 rounded-xl">
+			<NormalPokemonCard pokemon={pokemon} />
+		  </li>
+		))}
+	  </ul>
+	  </>
+	);
+  }
+  
+ export function AddCardsBtn({ loaderFnct }) {
+	return (
+	  <div className="flex justify-center mt-4">
+		<button onClick={loaderFnct} className="bg-red-500 px-4 py-1 rounded-lg">
+		  <span className="text-white font-semibold">Load more pokemons</span>
+		</button>
+	  </div>
+	)
+  }
+

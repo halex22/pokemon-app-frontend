@@ -1,15 +1,15 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { Pokemon } from './routes/pokemon.jsx'
-import { Ability } from './routes/detailRoutes/ability.jsx'
 import { Generation } from './routes/generation.jsx'
-import { EggGroupRoute } from './routes/eggGroup.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { MainLayout } from './layout/mainLayout.jsx'
 import { AbilitiesRoute } from './routes/navRoutes/abilities.jsx'
 import { EggGroups } from './routes/navRoutes/eggGroups.jsx'
 import { TypesNav } from './routes/navRoutes/types.jsx'
 import { DetailType } from './routes/detailRoutes/detailedType.jsx' 
+import { DetailedAbility } from './routes/detailRoutes/detailedAbility.jsx'
+import { DetailEggGroupRoute } from './routes/detailRoutes/detailedEggGroup.jsx'
 import './index.css'
 
 
@@ -28,11 +28,11 @@ const router = createBrowserRouter([
   },
   {
     path: 'ability/:slug',
-    element: <Ability />
+    element: <DetailedAbility />
   },
   {
     path: 'egg-group/:slug',
-    element: <EggGroupRoute />
+    element: <DetailEggGroupRoute />
   },
   {
     path: 'abilities',

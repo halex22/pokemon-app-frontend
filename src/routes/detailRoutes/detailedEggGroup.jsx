@@ -1,15 +1,17 @@
-/* eslint-disable react/prop-types */
 import { usePagedFetchData } from "../../hooks/useFetchData";
-import { CardsSection, AddCardsBtn } from "../../components/pokemonComponents/pokemonCards";
 import { LoadingSpinner } from "../../components/loading";
+import { CardsSection, AddCardsBtn } from "../../components/pokemonComponents/pokemonCards";
+export function DetailEggGroupRoute() {
 
-export function DetailType() {
-  const { data: pokemons, increasePageNumber, isLoading, totalObjects } = usePagedFetchData('by-type');
+  const { data: pokemons, isLoading, totalObjects, increasePageNumber} = usePagedFetchData('by-egg-group')
 
   return (
     <>
-      {pokemons && (
-        <div className="p-4">
+
+    {isLoading && <LoadingSpinner /> }
+
+    {pokemons.length && (
+      <div className="p-4">
           <CardsSection pokemonInfoArray={pokemons}/>
           <div className="flex justify-end my-2">
             <p className="font-bold">
@@ -19,12 +21,9 @@ export function DetailType() {
           {!isLoading && pokemons.length < totalObjects.current && (
             <AddCardsBtn loaderFnct={increasePageNumber}/>
           )}
-        </div>
-      )}
-
-      {isLoading && <LoadingSpinner />}
-
+      </div>
+    )}
+    <h2>Here</h2>
     </>
   );
 }
-

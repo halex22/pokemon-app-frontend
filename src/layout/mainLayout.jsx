@@ -4,10 +4,12 @@ import { Footer } from "./footer";
 
 export function MainLayout({ children }) {
 	return (
-		<>
+		<div className="">
 			<NavBar />
-			{ children }
+			<main className="">
+				{ children }
+			</main>
 			<Footer />
-		</>
+		</div>
 	)
 }
