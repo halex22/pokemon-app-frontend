@@ -2,19 +2,34 @@
 import { LoadingSpinner } from "../../components/loading";
 import { useFetchData } from "../../hooks/useFetchData";
 import { useQuery } from "../../hooks/useQuery";
+import { UpArrowSvg } from "../../components/svg/arrow";
 
 
 export function AbilitiesRoute() {
 
   const { data: abilities } = useFetchData('all-abilities/');
   const { searchQuery, handleInputChange, filteredData } = useQuery(abilities);
+
+  const handleTopBtn = () => {
+    // window.location.href = '#top-container'
+    window.scrollTo({top:0, behavior:'smooth'})
+  }
+
   return (
     <>
       {abilities ? (
-        <div>
+        <div className="top-container">
           <h1 className="text-center my-4 font-bold capitalize text-xl"></h1>
           <div className="flex justify-center">
             <SearchComponent inputValue={searchQuery} handlerFnct={handleInputChange} />
+          </div>
+
+          <div className="sticky top-7 ms-2" onClick={handleTopBtn}>
+            <button className="rounded-xl bg-red-500 p-1" >
+              <span className="text-white">
+                <UpArrowSvg />
+              </span>
+            </button>
           </div>
 
           {searchQuery && (
@@ -74,9 +89,9 @@ function AbilitiesListComponent({ abilities }) {
 
   return (
     <>
-      <ul className="grid grid-cols-6">
+      <ul className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
         {abilities.map((ability, index) => (
-          <li key={index} className="p-2 hover:text-blue-600 ">
+          <li key={index} className="p-2 ">
             <AbilityCard ability={ability}/>
           </li>
         ))}
@@ -95,7 +110,7 @@ function AbilityCard({ ability }) {
   return (
     <button className="border-2 px-2 py-1 w-full group rounded-xl hover:border-red-500"
       onClick={handleDivClick}>
-      <a href={`ability/${ability.slug}`} className="capitalize group-hover:text-red-500">
+      <a href={`ability/${ability.slug}`} className="capitalize group-hover:text-red-500 font-bold">
         {ability.name}
       </a>
     </button>
@@ -106,14 +121,15 @@ function AbilityCard({ ability }) {
 function SearchComponent({ inputValue, handlerFnct }) {
   return (
     <>
-      <div className="border-2 w-[25%] mb-4 ms-4 rounded-xl">
-        <div className="flex items-center p-1">
-          <div ><SearchIcon /></div>
-          <input type="text" placeholder="ability name....."
-            value={inputValue && inputValue} onChange={handlerFnct}
-            className="focus:outline-none border-0"
-          />
-        </div>
+      <div className="border-2 w-[45%] md:w-[25%] mb-4 ms-4 rounded-xl flex py-1">
+        <div ><SearchIcon /></div>
+        <input
+          type="text"
+          placeholder="  Ability name ..."
+          value={inputValue && inputValue}
+          onChange={handlerFnct}
+          className="w-full focus:outline-none "
+        />
       </div>
     </>
   );

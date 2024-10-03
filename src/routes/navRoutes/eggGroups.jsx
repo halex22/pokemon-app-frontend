@@ -14,7 +14,7 @@ export function EggGroups() {
         <div>
           <h1 className="text-center my-4 font-semibold text-xl">Egg Groups</h1>
           <div className="">
-            <ul className="grid grid-cols-4">
+            <ul className="grid  md:grid-cols-2 lg:grid-cols-4">
               {eggGroups.map((group, index) => (
                 <li key={index} >
                   <EggGroupCard eggGroup={group}/>

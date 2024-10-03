@@ -1,8 +1,8 @@
 export function Home() {
   return (
 		<main>
-			<h1 className="text-center py-4">Welcome to my pokemon API</h1>
-			<p className="">Please feel free to visit any of this roots</p>
+			<h1 className="text-center my-4">Welcome to my pokemon API</h1>
+		
 
 			<ul>
 				<li><a href="/pokemon/pikachu">Pikachu</a></li>

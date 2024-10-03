@@ -51,5 +51,49 @@ export function usePagedFetchData(endpoint) {
 }
 
 
+export function useEditablePagedFetchData(endpoint) {
+  const [data , setData] = useState([])
+  const [pageNumber, setPageNumber] = useState(1)
+  const [pageSize, setPageSize] = useState(25)
+  const [ isLoading, setIsLoading ] = useState(true)
+
+  const totalObjects = useRef(0)
+
+  const increasePageNumber = () => {
+    setIsLoading(true)
+    setPageNumber((prevPageNumber) => (prevPageNumber + 1))
+  }
+
+  const changePageNumberSize = (newPageSize) => {
+    if (newPageSize < 1) return
+    setPageSize(newPageSize)
+  }
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetchPokemon(`${endpoint}/?page=${pageNumber}&page_size=${pageSize}`)
+      setData((prevData) => [...prevData, ...response.results])
+      setIsLoading(false)
+      if (totalObjects.current) return 
+      totalObjects.current = response.count
+    }
+    console.log('getting info')
+    if (!isLoading) return
+
+    try {
+      getData()
+    }
+    catch (e) {
+      console.error('hell no ', e)
+    } finally {
+      setIsLoading(false)
+    }
+    
+  }, [endpoint, pageNumber, pageSize, isLoading])
+
+
+  // const response = await fetchPokemon(`${endpoint}/?page=${pageNumber}&page_size=${pageSize}`
+  return {data, pageSize, increasePageNumber, changePageNumberSize, isLoading, totalObjects}
+}
 
 

@@ -4,7 +4,7 @@ import { AbilitiesComponent } from "./abilities";
 
 export function NormalPokemonCard({ pokemon }) {
 	return (
-		<div className="py-4 grid grid-cols-2 items-center">
+		<div className="py-4 grid grid-cols-2 items-center hover:border-red-400">
 			<div className="relative max-h-[70%] h-full overflow-hidden me-4">
 				<img className="absolute object-contain h-full w-full"
 					src={`https://img.pokemondb.net/artwork/${pokemon.name}.jpg`}
@@ -17,7 +17,7 @@ export function NormalPokemonCard({ pokemon }) {
 				</h2>
 				<h4 className="sr-only">Types</h4>
 				<PokemonTypes typesArray={pokemon.types} />
-				<h4>Notional Index:
+				<h4>National Index:
 					<span className="font-bold ms-2">{pokemon.national_index}</span>
 				</h4>
 				<AbilitiesComponent abilitiesArray={pokemon.abilities}/>
@@ -32,7 +32,7 @@ export function CardsSection({pokemonInfoArray}) {
 	  <>
 	  <ul id="list-container" className="grid grid-cols-fit-300 gap-4">
 		{pokemonInfoArray.map((pokemon) => (
-		  <li key={pokemon.national_index} className="border-2 rounded-xl">
+		  <li key={pokemon.national_index} className="border-2 rounded-xl hover:border-red-600">
 			<NormalPokemonCard pokemon={pokemon} />
 		  </li>
 		))}

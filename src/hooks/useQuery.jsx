@@ -20,11 +20,9 @@ export function useQuery(allEntries) {
     }
 
     if (!filtered.length && searchQuery) {
-      console.log('nothing found')
       setFilteredData([])
     }
 
-    console.log(filtered)
 
   }, [searchQuery, allEntries])
 

@@ -18,7 +18,7 @@ export function Pokemon() {
 				<>
 				<h1 className="capitalize text-2xl text-center my-2">Pokemon: <span className="font-bold">{pokemon.name}</span> </h1>
 
-				<div className="grid grid-cols-2">
+				<div className="md:flex justify-center">
 					<div className="flex justify-center">
 						<img className="object-contain"
 							src={`https://img.pokemondb.net/artwork/${pokemon.name}.jpg`}
@@ -26,12 +26,12 @@ export function Pokemon() {
 						/>
 					</div>
 
-					<div className="flex flex-col justify-center">
+					<div className="flex flex-col items-center md:justify-center">
 						<hgroup>
-							<h3 className="font-bold text-lg">Types</h3>
+							<h3 className="font-bold text-lg text-center">Types</h3>
 							<PokemonTypes typesArray={pokemon.types} />
 						</hgroup>
-						<h4>Notional Index:
+						<h4 className="my-1">Notional Index:
 							<span className="font-bold ms-2">{pokemon.national_index}</span>
 						</h4>
 
@@ -40,7 +40,7 @@ export function Pokemon() {
 
 						<AbilitiesComponent abilitiesArray={pokemon.abilities}/>
 
-						<h4 className="capitalize">Hidden ability:
+						<h4 className="capitalize my-1">Hidden ability:
 							<a href={`/ability/${pokemon.hidden_ability.slug}`}>
 								<span className="ms-2 text-blue-600 font-semibold">{pokemon.hidden_ability.name}</span>
 							</a>
@@ -51,10 +51,10 @@ export function Pokemon() {
 				</div>
 
 				<div className="px-4">
-					<h2 className="text-xl font-bold">Types Effectiveness</h2>
+					<h2 className="sr-only">Types Effectiveness</h2>
 					<div className="grid md:grid-cols-5 ">
 						<div className="col-span-2">
-							<EffectinessComponent typesArray={pokemon.pokemon_type_effect} />
+							<EffectivenessComponent typesArray={pokemon.pokemon_type_effect} />
 						</div>
 
 						<div className="col-span-3 p-2">
@@ -82,8 +82,8 @@ export function Pokemon() {
 					</div>
 				</div>
 
-				<div>
-					<h2>Pokedex Entries</h2>
+				<div className="flex justify-center mb-8 mt-4 px-4">
+					<h2 className="sr-only">Pokedex Entries</h2>
 					<PokemonEntries entriesArray={pokemon.pokedex_entries}/>
 				</div>
 				</>
@@ -149,7 +149,7 @@ function InnerTable({statName, base, max, min}) {
 }
 
 
-function EffectinessComponent({ typesArray }) {
+function EffectivenessComponent({ typesArray }) {
 	return (
 		<>
 			<table className="mt-2 w-full">
@@ -178,7 +178,7 @@ function EffectinessComponent({ typesArray }) {
 function PokemonEntries({ entriesArray }) {
 	return (
 		<>
-			<table>
+			<table className="">
 				<thead>
 					<tr>
 						<th>Pokemon Game</th>
@@ -187,7 +187,7 @@ function PokemonEntries({ entriesArray }) {
 				</thead>
 				<tbody>
 					{entriesArray.map((entry, index) => (
-						<tr key={index}>
+						<tr key={index} className="border-b-2">
 							<td className="capitalize font-semibold pe-2">{entry.pokemon_game.name}</td>
 							<td>{entry.entry}</td>
 						</tr>

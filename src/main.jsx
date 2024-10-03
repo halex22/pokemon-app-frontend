@@ -10,6 +10,8 @@ import { TypesNav } from './routes/navRoutes/types.jsx'
 import { DetailType } from './routes/detailRoutes/detailedType.jsx' 
 import { DetailedAbility } from './routes/detailRoutes/detailedAbility.jsx'
 import { DetailEggGroupRoute } from './routes/detailRoutes/detailedEggGroup.jsx'
+import { AllPokemonRoute } from './routes/navRoutes/allPokemon.jsx'
+import { GenerationsRoute } from './routes/navRoutes/generation.jsx'
 import './index.css'
 
 
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
   {
     path: 'pokemons/types/:slug',
     element: <DetailType />
+  },
+  {
+    path: 'all-pokemons',
+    element: <AllPokemonRoute />
+  },
+  {
+    path: 'pokemon-generations',
+    element: <GenerationsRoute />
   }
 ])
 
