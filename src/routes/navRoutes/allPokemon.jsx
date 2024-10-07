@@ -2,6 +2,7 @@
 import { useEditablePagedFetchData } from "../../hooks/useFetchData";
 import { LoadingSpinner } from "../../components/loading";
 import { CardsSection, AddCardsBtn } from "../../components/pokemonComponents/pokemonCards";
+import { UpBtn } from "../../components/upbtn";
 
 export function AllPokemonRoute() {
 
@@ -17,7 +18,7 @@ export function AllPokemonRoute() {
   return (
     <>
       <h1 className="text-center text-xl font-bold my-8" id="main-header">All Pokemons</h1>
-      <BackToTopComponent />
+      <UpBtn />
 
       {pokemons.length && (
         <div className="p-4">
@@ -56,24 +57,6 @@ function ChangePageSizeComponent({ pageSize, handleApplyBtn }) {
           <span className="text-white font-bold">Apply</span>
         </button>
       </p>
-    </>
-  );
-}
-
-
-function BackToTopComponent() {
-
-  const moveTo = () => {
-    window.scrollTo({top:0, behavior: 'smooth'})
-  }
-
-  return (
-    <>
-      <div className="sticky top-0 z-10 ms-4">
-        <button className="bg-red-400 px-2 py-1 rounded-lg hover:bg-red-400/80" onClick={moveTo}>
-          <span className="text-white font-bold">Back to top </span>
-        </button>
-      </div>
     </>
   );
 }

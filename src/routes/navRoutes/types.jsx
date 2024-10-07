@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { typesPalette } from "../../services/typesPallette.mjs";
+import { typesPalette } from "../../services/typesPallette.js";
 
 const typesArray = [
   'normal',
@@ -21,6 +21,7 @@ const typesArray = [
   'steel',
   'fairy',
 ];
+
 
 export function TypesNav() {
   return (

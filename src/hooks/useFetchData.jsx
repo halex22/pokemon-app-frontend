@@ -23,6 +23,7 @@ export function usePagedFetchData(endpoint) {
   const { slug } = useParams()
   const [ pageNumber, setPageNumber ] = useState(1)
   const [ isLoading, setIsLoading ] = useState(true)
+  const [ errorMessage, setErrorMessage ] = useState('')
 
   const totalObjects = useRef(0)
 
@@ -34,20 +35,29 @@ export function usePagedFetchData(endpoint) {
 
   useEffect(() => {
     const getData = async () => {
-      console.log(slug)
-      const response = await fetchPokemon(`${endpoint}/${slug}/?page=${pageNumber}`)
-      setData((prevData) => [...prevData, ...response.results])
-      console.log(response)
-      if (totalObjects.current) return 
-      totalObjects.current = response.count
+      setIsLoading(true)
+      setErrorMessage('')
+      try {
+        const response = await fetchPokemon(`${endpoint}/${slug}/?page=${pageNumber}`)
+        setData((prevData) => [...prevData, ...response.results])
+        if (totalObjects.current) return 
+        totalObjects.current = response.count
+      } catch (error) {
+        console.log(error)
+        const msg = error.cause === 404 ? '404 No Pokemons were found'
+        : 'Could not make the request please try again later'
+        setErrorMessage(msg)        
+      } finally {
+        setIsLoading(false)
+      }           
     }
+
     if (!isLoading) return 
     getData()
-    setIsLoading(false)
 
   }, [endpoint, slug, pageNumber, isLoading])
 
-  return { data, slug, increasePageNumber, isLoading, totalObjects }
+  return { data, slug, increasePageNumber, isLoading, totalObjects, errorMessage }
 }
 
 

@@ -1,32 +1,21 @@
 /* eslint-disable react/prop-types */
-import { LoadingSpinner } from "../../components/loading";
-import { useFetchData } from "../../hooks/useFetchData";
-
+import { eggGroupsCategories } from "../../services/eggGroupsCategories";
 
 
 export function EggGroups() {
-
-  const { data: eggGroups } = useFetchData('all-egg-groups/');
-
   return (
-    <>
-      {eggGroups ? (
-        <div>
-          <h1 className="text-center my-4 font-semibold text-xl">Egg Groups</h1>
-          <div className="">
-            <ul className="grid  md:grid-cols-2 lg:grid-cols-4">
-              {eggGroups.map((group, index) => (
-                <li key={index} >
-                  <EggGroupCard eggGroup={group}/>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      ) : (
-        <LoadingSpinner />
-      )}
-    </>
+    <div>
+      <h1 className="text-center my-4 font-semibold text-xl">Egg Groups</h1>
+      <div className="">
+        <ul className="grid  md:grid-cols-2 lg:grid-cols-4">
+          {eggGroupsCategories.map((group, index) => (
+            <li key={index} >
+              <EggGroupCard eggGroup={group} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
 
@@ -34,8 +23,9 @@ export function EggGroups() {
 function EggGroupCard({ eggGroup }) {
 
   const handleDivClick = () => {
-    window.location.href = `/egg-group/${eggGroup.slug}`
-  }
+    window.location.href = `/egg-group/${eggGroup.slug}`;
+  };
+  
   return (
     <div className="p-12 m-6 border-4 rounded-xl hover:border-red-500 cursor-pointer group"
       onClick={handleDivClick} role="button">

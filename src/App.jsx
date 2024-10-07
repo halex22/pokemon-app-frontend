@@ -1,5 +1,6 @@
 import { LinkedInLogo } from "./components/svg/logos"
 import { GitHubLogo } from "./components/svg/logos"
+import { ColoredPokeballSVG } from "./components/svg/pokeball"
 
 function App() {
 
@@ -12,10 +13,15 @@ function App() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center">
+    <main className=" flex flex-col items-center justify-center">
+
+      <div className="py-24">
+        <ColoredPokeballSVG />
+      </div>
       <h2 className="text-3xl font-bold">Welcome!</h2>
 
-      <p className="mt-4 text-lg">Please feel free to look around my Pokemon API.</p>
+      <p className="mt-4 text-lg text-center">Please feel free to look around my Pokemon API.</p>
+      <small>Created by: Hugo Martinez</small>
 
       <div className="flex mt-4">
         

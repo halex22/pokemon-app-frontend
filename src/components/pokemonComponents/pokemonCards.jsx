@@ -30,7 +30,7 @@ export function NormalPokemonCard({ pokemon }) {
 export function CardsSection({pokemonInfoArray}) {
 	return (
 	  <>
-	  <ul id="list-container" className="grid grid-cols-fit-300 gap-4">
+	  <ul id="list-container" className="grid grid-cols-fit-300 gap-4 px-8 md:px-0">
 		{pokemonInfoArray.map((pokemon) => (
 		  <li key={pokemon.national_index} className="border-2 rounded-xl hover:border-red-600">
 			<NormalPokemonCard pokemon={pokemon} />

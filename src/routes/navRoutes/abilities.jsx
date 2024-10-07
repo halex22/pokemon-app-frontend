@@ -2,7 +2,7 @@
 import { LoadingSpinner } from "../../components/loading";
 import { useFetchData } from "../../hooks/useFetchData";
 import { useQuery } from "../../hooks/useQuery";
-import { UpArrowSvg } from "../../components/svg/arrow";
+import { UpBtn } from "../../components/upbtn";
 
 
 export function AbilitiesRoute() {
@@ -10,10 +10,7 @@ export function AbilitiesRoute() {
   const { data: abilities } = useFetchData('all-abilities/');
   const { searchQuery, handleInputChange, filteredData } = useQuery(abilities);
 
-  const handleTopBtn = () => {
-    // window.location.href = '#top-container'
-    window.scrollTo({top:0, behavior:'smooth'})
-  }
+
 
   return (
     <>
@@ -24,13 +21,7 @@ export function AbilitiesRoute() {
             <SearchComponent inputValue={searchQuery} handlerFnct={handleInputChange} />
           </div>
 
-          <div className="sticky top-7 ms-2" onClick={handleTopBtn}>
-            <button className="rounded-xl bg-red-500 p-1" >
-              <span className="text-white">
-                <UpArrowSvg />
-              </span>
-            </button>
-          </div>
+          <UpBtn />
 
           {searchQuery && (
             !filteredData.length ? (<h2 className="text-center font-semibold">Sorry no abilities matched your typed text</h2>) : (

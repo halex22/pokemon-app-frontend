@@ -28,8 +28,8 @@ function GenCard ({ genNumber}) {
     <>
     <div className="border-4 p-12 m-6 rounded-xl hover:border-red-500 cursor-pointer group" onClick={handleClick}>
       <h2 className="mx-2 group-hover:text-red-500">
-        <a href={`/pokemon/generation/${genNumber}`}>
-          <span className="font-extrabold text-lg">Generation {genNumber +1 }</span>
+        <a href={`/pokemon/generation/${genNumber + 1}`}>
+          <span className="font-extrabold text-lg">Generation {genNumber + 1 }</span>
         </a>
       </h2>
     </div>

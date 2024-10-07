@@ -1,11 +1,11 @@
+import { LoadingSpinner } from "../../components/loading";
 import { usePagedFetchData } from "../../hooks/useFetchData";
 import { CardsSection, AddCardsBtn } from "../../components/pokemonComponents/pokemonCards";
-import { LoadingSpinner } from "../../components/loading";
 import { UpBtn } from "../../components/upbtn";
 import { ColoredPokeballSVG } from "../../components/svg/pokeball";
 
-export function DetailType() {
-  const { data: pokemons, increasePageNumber, isLoading, totalObjects, errorMessage } = usePagedFetchData('by-type');
+export function DetailGeneration() {
+  const { data: pokemons, increasePageNumber, isLoading, totalObjects, errorMessage } = usePagedFetchData('by-generation');
 
   return (
     <>
@@ -23,7 +23,7 @@ export function DetailType() {
           <strong className="mt-12 text-lg">{errorMessage}</strong>
         </div>
       )}
-
+      
       {pokemons.length && (
         <div className="p-4">
           <UpBtn />
@@ -37,8 +37,8 @@ export function DetailType() {
             <AddCardsBtn loaderFnct={increasePageNumber} />
           )}
         </div>
-      )}     
+      )}
+
     </>
   );
 }
-

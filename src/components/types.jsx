@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { typesPalette } from "../services/typesPallette.mjs"
+import { typesPalette } from "../services/typesPallette.js"
 
 export function PokemonTypes({ typesArray }) {
 	return (

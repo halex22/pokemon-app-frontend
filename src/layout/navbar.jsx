@@ -4,9 +4,14 @@ import { PokeballSVG } from '../components/svg/pokeball';
 import { DropdownMenu } from './dropDown';
 
 export function NavBar() {
+
+  const goHome = () => {
+    window.location.href = '/'
+  }
+
   return (
     <nav className="bg-gradient-to-r from-red-600 to-red-400 flex items-center justify-between md:justify-start">
-      <div className='max-w-8 ms-2 me-4 py-3'>
+      <div className='max-w-8 ms-2 me-4 py-3 cursor-pointer' onClick={goHome}>
         <PokeballSVG />
       </div>
       <div className='hidden md:block'>
