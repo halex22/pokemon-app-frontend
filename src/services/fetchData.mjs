@@ -1,6 +1,9 @@
+// const host = 'http://127.0.0.1:8000'
+const host = 'https://dj-api-pk-x28c.onrender.com'
+
 export async function fetchPokemon(endpoint) {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/${endpoint}`)
+    const response = await fetch(`${host}/${endpoint}`)
     if (!response.ok) {
       throw new Error('Pokemon not found', {cause: 404})
     }
